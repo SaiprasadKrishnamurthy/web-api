@@ -1,0 +1,61 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "This is a simple REST API written in Golang to demonstrate it's simplicity.",
+        "title": "Web API written in Golang",
+        "termsOfService": "http://swagger.io/terms/",
+        "contact": {
+            "name": "Sai Kris",
+            "url": "http://www.swagger.io/support",
+            "email": "support@swagger.io"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0"
+    },
+    "host": "localhost:8082",
+    "basePath": "/api/v1",
+    "paths": {
+        "/echos": {
+            "get": {
+                "description": "Simulates a slow echo request.",
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "Get echo messages.",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.Echo"
+                        },
+                        "headers": {
+                            "Token": {
+                                "type": "string",
+                                "description": "qwerty"
+                            }
+                        }
+                    },
+                    "400": {},
+                    "404": {},
+                    "500": {}
+                }
+            }
+        }
+    },
+    "definitions": {
+        "models.Echo": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

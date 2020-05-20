@@ -16,7 +16,7 @@ type EchoController struct {
 	BaseController
 }
 
-// Echo echos.
+// Echo echo.
 func (c *EchoController) Echo(rw http.ResponseWriter, r *http.Request, p httprouter.Params) error {
 	url := "http://slowwly.robertomurray.co.uk/delay/1000/url/https://reqres.in/api/users?page=2"
 	resp, err := http.Get(url)
@@ -33,6 +33,16 @@ func (c *EchoController) Echo(rw http.ResponseWriter, r *http.Request, p httprou
 }
 
 // GetEchos from database.
+// Echo echos.
+// @Summary Get echo messages.
+// @Description Get echos from the database.
+// @Produce  json
+// @Success 200 {object} models.Echo
+// @Header 200 {string} Token "qwerty"
+// @Failure 400
+// @Failure 404
+// @Failure 500
+// @Router /echos [get]
 func (c *EchoController) GetEchos(rw http.ResponseWriter, r *http.Request, p httprouter.Params) error {
 	rows, _ := c.DB.Query("SELECT * FROM ECHO")
 	var id, message string
